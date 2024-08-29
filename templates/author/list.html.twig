@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Authors{% endblock %}
+
+{% block body %}
+    <h1>Authors</h1>
+
+    <a href="{{ path('author_new') }}">Add New Author</a>
+
+    <ul>
+        {% for author in authors %}
+            <li>
+                {{ author.firstName }} {{ author.lastName }}
+                <p>Date of Birth: {{ author.dateOfBirth|date('Y-m-d') }}</p>
+                <a href="{{ path('author_edit', {'id': author.id}) }}">Edit</a>
+                <a href="{{ path('author_delete', {'id': author.id}) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </li>
+        {% else %}
+            <li>No authors found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

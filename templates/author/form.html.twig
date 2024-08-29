@@ -1,0 +1,15 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ form_title(form) }}{% endblock %}
+
+{% block body %}
+    <h1>{{ form_title(form) }}</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button type="submit">Save</button>
+    {{ form_end(form) }}
+
+    <a href="{{ path('author_list') }}">Back to list</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block body %}
+    <h1>Welcome to My Library</h1>
+
+
+
+    <h2>Available Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author.firstName }} {{ book.author.lastName }}
+                <p>{{ book.description }}</p>
+            </li>
+        {% else %}
+            <li>No books available.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

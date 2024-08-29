@@ -1,0 +1,23 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Books{% endblock %}
+
+{% block body %}
+    <h1>Books</h1>
+
+    <a href="{{ path('book_new') }}">Add New Book</a>
+
+    <ul>
+        {% for book in books %}
+            <li>
+                <strong>{{ book.title }}</strong> by {{ book.author.firstName }} {{ book.author.lastName }}
+                <p>{{ book.description }}</p>
+                <a href="{{ path('book_edit', {'id': book.id}) }}">Edit</a>
+                <a href="{{ path('book_delete', {'id': book.id}) }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </li>
+        {% else %}
+            <li>No books found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
